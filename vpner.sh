@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 clear;
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -15,12 +15,15 @@ echo -e "\nOPTIONS: \t\t\t\t DESCRIPTION:"
 echo -e "${GREEN}1 - Connect HackTheBox${nc} \t\t\t - HackTheBox vpn connection"
 echo -e "${GREEN}2 - Connect TryHackMe${nc} \t\t\t - TryHackMe vpn connection"
 echo -e "${GREEN}3 - Find OpenVPN${nc} \t\t\t - Check if OpenVPN is already connected"
+echo -e "${GREEN}4 - Hunt for the OVPN files${nc} \t\t - Start a quick search for the ovpn file within /root and /home"
 printf "\n"
 
 read -p "Please Choose from one of the options by entering the number: " option
 
 echo -e "\nYou selected option:" $option
 
+#Make sure to add your ovpn paths to the below, and add others if you have more.
+vpnhunt="find /root /home -name *.ovpn"
 hackthebox="openvpn /root/Documents/SSH\&VPN/Norseman2018HTB.ovpn"
 tryhackme="openvpn /root/Documents/SSH\&VPN/Norseman2018THM.ovpn"
 
@@ -53,6 +56,13 @@ then
                 sleep 2;
                 kill -9 $pronum
         fi
+
+elif [[ $option == 4 ]];
+then
+        echo -e "\n${CYAN}Your VPN files lord: ${nc}\n"
+        sleep 0.5;
+        $vpnhunt
+        printf "\n"
 
 else
         echo -e "\nYou went full retard and didnt choose a valid option! \n"
