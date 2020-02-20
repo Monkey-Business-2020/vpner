@@ -24,8 +24,8 @@ echo -e "\nYou selected option:" $option
 
 #Make sure to add your ovpn paths to the below, and add others if you have more.
 vpnhunt="find /root /home -name *.ovpn"
-hackthebox="openvpn /root/Documents/SSH\&VPN/Norseman2018HTB.ovpn"
-tryhackme="openvpn /root/Documents/SSH\&VPN/Norseman2018THM.ovpn"
+hackthebox="openvpn /root/../filename.ovpn"
+tryhackme="openvpn /root/../Norseman2018THM.ovpn"
 
 if [[ $option == 1 ]];
 then
